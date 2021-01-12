@@ -1,0 +1,22 @@
+name: nvd-json_feeds
+summary: A Ruby API to NVD JSON Feeds
+description: Provides a Ruby API to NVD JSON Feeds.
+license: MIT
+authors: Postmodern
+email: postmodern.mod3@gmail.com
+homepage: https://github.com/postmodern/nvd-json_feeds#readme
+
+metadata:
+  documentation_uri: https://rubydoc.info/gems/nvd-json_feeds
+  source_code_uri:   https://github.com/postmodern/nvd-json_feeds.rb
+  bug_tracker_uri:   https://github.com/postmodern/nvd-json_feeds.rb/issues
+  changelog_uri:     https://github.com/postmodern/nvd-json_feeds.rb/blob/main/ChangeLog.md
+
+required_ruby_version: ">= 2.7.0"
+
+dependencies:
+  multi_json: ~> 1.0
+  cve_schema: ~> 0.1
+
+development_dependencies:
+  bundler: ~> 2.0
