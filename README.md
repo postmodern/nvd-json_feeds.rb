@@ -113,6 +113,10 @@ Access a pre-extracted `.json` feed file:
 
     $ gem install nvd-json_feeds
 
+### Gemfile
+
+    gem 'nvd-json_feeds', '~> 0.1'
+
 ## Copyright
 
 Copyright (c) 2021 Hal Brodigan
