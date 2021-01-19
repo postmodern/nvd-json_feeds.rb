@@ -1,3 +1,5 @@
+require 'nvd/json_feeds/exceptions'
+
 require 'time'
 
 module NVD
@@ -69,7 +71,7 @@ module NVD
       # @return [Meta]
       #   The parsed meta information.
       #
-      # @raise [RuntimeError]
+      # @raise [MetaParseError]
       #   The meta string was malformed.
       #
       def self.parse(string)
@@ -93,23 +95,23 @@ module NVD
         end
 
         unless last_modified_date
-          raise("lastModifiedDate missing")
+          raise(MetaParseError,"lastModifiedDate missing")
         end
 
         unless size
-          raise("size entry missing")
+          raise(MetaParseError,"size entry missing")
         end
 
         unless zip_size
-          raise("zipSize entry missing")
+          raise(MetaParseError,"zipSize entry missing")
         end
 
         unless gz_size
-          raise("gzSize entry missing")
+          raise(MetaParseError,"gzSize entry missing")
         end
 
         unless sha256
-          raise("sha256 entry missing")
+          raise(MetaParseError,"sha256 entry missing")
         end
 
         return new(last_modified_date,size,zip_size,gz_size,sha256)

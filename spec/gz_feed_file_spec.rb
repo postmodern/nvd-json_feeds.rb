@@ -34,7 +34,7 @@ describe NVD::JSONFeeds::GzFeedFile do
       end
 
       it do
-        expect { subject.read }.to raise_error(RuntimeError)
+        expect { subject.read }.to raise_error(ReadFailed)
       end
     end
   end

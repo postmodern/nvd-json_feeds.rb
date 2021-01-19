@@ -2,6 +2,7 @@
 
 require 'nvd/json_feeds/feed_file'
 require 'nvd/json_feeds/json_feed_file'
+require 'nvd/json_feeds/exceptions'
 
 require 'shellwords'
 
@@ -26,13 +27,13 @@ module NVD
       #
       # @return [String]
       #
-      # @raise [RuntimeError]
+      # @raise [ReadFailed]
       #   The `unzip` command is not installed.
       #
       def read
         `unzip -p #{Shellwords.escape(@path)} #{Shellwords.escape(json_filename)}`
       rescue Errno::ENOENT
-        raise("unzip command is not installed")
+        raise(ReadFailed,"unzip command is not installed")
       end
 
       #
@@ -40,20 +41,20 @@ module NVD
       #
       # @return [JSONFeedFile]
       #
-      # @raise [RuntimeError]
+      # @raise [ExtractFailed]
       #   The `unzip` command failed or the `.json` file was not extracted.
       #
       def extract(dest_dir=nil)
         extracted_dir = dest_dir || File.dirname(@path)
 
         unless system('unzip', '-d', extracted_dir, @path, json_filename)
-          raise("unzip command failed")
+          raise(ExtractFailed,"unzip command failed")
         end
 
         extracted_path = File.join(extracted_dir,json_filename)
 
         unless File.file?(extracted_path)
-          raise("extraction failed: #{@path.inspect}")
+          raise(ExtractFailed,"extraction failed: #{@path.inspect}")
         end
 
         return JSONFeedFile.new(extracted_path)

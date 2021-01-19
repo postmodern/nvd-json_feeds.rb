@@ -2,6 +2,7 @@
 
 require 'nvd/json_feeds/feed_file'
 require 'nvd/json_feeds/json_feed_file'
+require 'nvd/json_feeds/exceptions'
 
 require 'shellwords'
 
@@ -23,10 +24,13 @@ module NVD
       #
       # @return [String]
       #
+      # @raise [ReadFailed]
+      #   The `gunzip` command is not installed.
+      #
       def read
         `gunzip -c -k #{Shellwords.escape(@path)}`
       rescue Errno::ENOENT
-        raise("gunzip command is not installed")
+        raise(ReadFailed,"gunzip command is not installed")
       end
 
       #
@@ -34,16 +38,19 @@ module NVD
       #
       # @return [JSONFeedFile]
       #
+      # @raise [ExtractFailed]
+      #   The `gunzip` command failed or did the `.json` file was not extracted.
+      #
       def extract
         unless system('gunzip', '-k', @path)
-          raise("gunzip command failed")
+          raise(ExtractFailed,"gunzip command failed")
         end
 
         extracted_dir  = File.dirname(@path)
         extracted_path = File.join(extracted_dir,json_filename)
 
         unless File.file?(extracted_path)
-          raise("extraction failed: #{@path.inspect}")
+          raise(ExtractFailed,"extraction failed: #{@path.inspect}")
         end
 
         return JSONFeedFile.new(extracted_path)

@@ -102,7 +102,7 @@ describe Meta do
       let(:string) { super().sub(/^lastModifiedDate:.*$/,'') }
 
       it do
-        expect { subject.parse(string) }.to raise_error(RuntimeError)
+        expect { subject.parse(string) }.to raise_error(MetaParseError)
       end
     end
 
@@ -110,7 +110,7 @@ describe Meta do
       let(:string) { super().sub(/^size:.*$/,'') }
 
       it do
-        expect { subject.parse(string) }.to raise_error(RuntimeError)
+        expect { subject.parse(string) }.to raise_error(MetaParseError)
       end
     end
 
@@ -118,7 +118,7 @@ describe Meta do
       let(:string) { super().sub(/^zipSize:.*$/,'') }
 
       it do
-        expect { subject.parse(string) }.to raise_error(RuntimeError)
+        expect { subject.parse(string) }.to raise_error(MetaParseError)
       end
     end
 
@@ -126,7 +126,7 @@ describe Meta do
       let(:string) { super().sub(/^gzSize:.*$/,'') }
 
       it do
-        expect { subject.parse(string) }.to raise_error(RuntimeError)
+        expect { subject.parse(string) }.to raise_error(MetaParseError)
       end
     end
 
@@ -134,7 +134,7 @@ describe Meta do
       let(:string) { super().sub(/^sha256:.*$/,'') }
 
       it do
-        expect { subject.parse(string) }.to raise_error(RuntimeError)
+        expect { subject.parse(string) }.to raise_error(MetaParseError)
       end
     end
   end
