@@ -3,4 +3,7 @@
 /Gemfile.lock
 /doc/
 /pkg/
+/spec/fixtures/downloads/
+/spec/fixtures/gz_feed_file/*.json
+/spec/fixtures/zip_feed_file/*.json
 /vendor/cache/*.gem
