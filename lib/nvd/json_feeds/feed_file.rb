@@ -87,7 +87,7 @@ module NVD
       # @return [String]
       #
       def inspect
-        "<#{self.class}: #{self}>"
+        "#<#{self.class}: #{self}>"
       end
 
     end
