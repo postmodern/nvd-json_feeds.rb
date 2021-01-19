@@ -1,4 +1,4 @@
-require 'nvd/json_feeds/zip_feed_file'
+require 'nvd/json_feeds/feed_uri'
 
 module NVD
   module JSONFeeds
