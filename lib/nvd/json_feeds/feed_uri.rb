@@ -26,7 +26,7 @@ module NVD
       # The file name of the feed.
       #
       # @return [String]
-      attr_reader :file
+      attr_reader :filename
 
       # The feed URI.
       #
@@ -45,9 +45,9 @@ module NVD
       def initialize(name,ext)
         @name = name
         @ext  = ext
-        @file = "nvdcve-#{SCHEMA_VERSION}-#{@name}#{@ext}"
 
-        @uri = URI("#{BASE_URI}/#{@file}")
+        @filename = "nvdcve-#{SCHEMA_VERSION}-#{@name}#{@ext}"
+        @uri      = URI("#{BASE_URI}/#{@filename}")
       end
 
       #
@@ -84,7 +84,7 @@ module NVD
       #   Either a destination file or directory.
       #
       def download(dest)
-        dest_path = if File.directory?(dest) then File.join(dest,@file)
+        dest_path = if File.directory?(dest) then File.join(dest,@filename)
                     else                          dest
                     end
 
