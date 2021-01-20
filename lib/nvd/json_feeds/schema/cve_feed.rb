@@ -39,7 +39,7 @@ module NVD
         # The feed timestamp.
         #
         # @return [DateTime, nil]
-        attr_reader :date_timestamp
+        attr_reader :data_timestamp
 
         # The CVE items.
         #
