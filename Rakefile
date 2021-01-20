@@ -17,7 +17,13 @@ Gem::Tasks.new
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
 
-task :test    => :spec
+namespace :spec do
+  RSpec::Core::RakeTask.new(:integration) do |t|
+    t.rspec_opts = '--tag integration'
+  end
+end
+
+task :test    => [:spec, 'spec:integration']
 task :default => :spec
 
 require 'yard'
