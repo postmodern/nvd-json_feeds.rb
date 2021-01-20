@@ -64,68 +64,72 @@ RSpec.shared_examples "JSON field" do |method: , json_key: , required: false, va
 end
 
 RSpec.shared_examples "JSON Object field" do |method: , json_key: , required: false, object_class: |
-  let(:json_value) { json_node[json_key] }
+  context "\"#{json_key}\"" do
+    let(:json_value) { json_node[json_key] }
 
-  if required
-    it { expect(subject.send(method)).to be_kind_of(object_class) }
-
-    context "when the \"#{json_key}\" key is missing" do
-      before { json_node.delete(json_key) }
-
-      it do
-        expect {
-          described_class.load(json_node)
-        }.to raise_error(KeyError)
-      end
-    end
-  else
-    context "when the \"#{json_key}\" key is present" do
+    if required
       it { expect(subject.send(method)).to be_kind_of(object_class) }
-    end
 
-    context "when the \"#{json_key}\" key is missing" do
-      before { json_node.delete(json_key) }
+      context "when the \"#{json_key}\" key is missing" do
+        before { json_node.delete(json_key) }
 
-      it do
-        expect(subject.send(method)).to be(nil)
+        it do
+          expect {
+            described_class.load(json_node)
+          }.to raise_error(KeyError)
+        end
+      end
+    else
+      context "when the \"#{json_key}\" key is present" do
+        it { expect(subject.send(method)).to be_kind_of(object_class) }
+      end
+
+      context "when the \"#{json_key}\" key is missing" do
+        before { json_node.delete(json_key) }
+
+        it do
+          expect(subject.send(method)).to be(nil)
+        end
       end
     end
   end
 end
 
 RSpec.shared_examples "JSON Array field" do |method: , json_key: , required: false, element_class: |
-  let(:json_value) { json_node[json_key] }
+  context "\"#{json_key}\"" do
+    let(:json_value) { json_node[json_key] }
 
-  if required
-    it { expect(subject.send(method)).to be_kind_of(Array) }
-    it { expect(subject.send(method)).to_not be_empty }
-    it { expect(subject.send(method)).to all(be_kind_of(element_class)) }
-
-    it "must parse every element of \"#{json_key}\"" do
-      expect(subject.send(method).length).to eq(json_value.length)
-    end
-
-    context "when the \"#{json_key}\" key is missing" do
-      before { json_node.delete(json_key) }
-
-      it do
-        expect {
-          described_class.load(json_node)
-        }.to raise_error(KeyError)
-      end
-    end
-  else
-    context "when the \"#{json_key}\" key is present" do
+    if required
       it { expect(subject.send(method)).to be_kind_of(Array) }
       it { expect(subject.send(method)).to_not be_empty }
       it { expect(subject.send(method)).to all(be_kind_of(element_class)) }
-    end
 
-    context "when the \"#{json_key}\" key is missing" do
-      before { json_node.delete(json_key) }
+      it "must parse every element of \"#{json_key}\"" do
+        expect(subject.send(method).length).to eq(json_value.length)
+      end
 
-      it do
-        expect(subject.send(method)).to eq([])
+      context "when the \"#{json_key}\" key is missing" do
+        before { json_node.delete(json_key) }
+
+        it do
+          expect {
+            described_class.load(json_node)
+          }.to raise_error(KeyError)
+        end
+      end
+    else
+      context "when the \"#{json_key}\" key is present" do
+        it { expect(subject.send(method)).to be_kind_of(Array) }
+        it { expect(subject.send(method)).to_not be_empty }
+        it { expect(subject.send(method)).to all(be_kind_of(element_class)) }
+      end
+
+      context "when the \"#{json_key}\" key is missing" do
+        before { json_node.delete(json_key) }
+
+        it do
+          expect(subject.send(method)).to eq([])
+        end
       end
     end
   end
