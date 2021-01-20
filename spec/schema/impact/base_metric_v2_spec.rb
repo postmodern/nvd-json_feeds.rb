@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'schema/shared_examples'
-require 'nvd/json_feeds/schema/impact'
+require 'nvd/json_feeds/schema/impact/base_metric_v2'
 
 describe Schema::Impact::BaseMetricV2 do
   describe "#initialize" do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'schema/shared_examples'
-require 'nvd/json_feeds/schema/configurations'
+require 'nvd/json_feeds/schema/configurations/node'
 
 describe Schema::Configurations::Node do
   describe "#initialize" do
