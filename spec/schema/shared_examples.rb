@@ -115,7 +115,7 @@ RSpec.shared_examples "JSON Array field" do |method: , json_key: , required: fal
       end
     end
   else
-    context 'when the "CVE_Items" key is present' do
+    context "when the \"#{json_key}\" key is present" do
       it { expect(subject.send(method)).to be_kind_of(Array) }
       it { expect(subject.send(method)).to_not be_empty }
       it { expect(subject.send(method)).to all(be_kind_of(element_class)) }
