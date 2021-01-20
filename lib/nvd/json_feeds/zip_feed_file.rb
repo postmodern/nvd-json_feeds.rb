@@ -44,8 +44,8 @@ module NVD
       # @raise [ExtractFailed]
       #   The `unzip` command failed or the `.json` file was not extracted.
       #
-      def extract(dest_dir=nil)
-        extracted_dir = dest_dir || File.dirname(@path)
+      def extract
+        extracted_dir = File.dirname(@path)
 
         unless system('unzip', '-qq', '-d', extracted_dir, @path, json_filename)
           raise(ExtractFailed,"unzip command failed")
