@@ -5,6 +5,8 @@ module NVD
       # Adds the {#data_version} attribute.
       #
       module HasDataVersion
+        DATA_VERSIONS = {'4.0' => :"4.0"}
+
         #
         # Extends {ClassMethods}.
         #
@@ -16,8 +18,6 @@ module NVD
         # The class methods.
         #
         module ClassMethods
-          DATA_VERSIONS = {'4.0' => :"4.0"}
-
           #
           # Maps the parsed JSON to a Symbol Hash for {#initialize}.
           #
