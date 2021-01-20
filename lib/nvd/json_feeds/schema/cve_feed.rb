@@ -83,8 +83,8 @@ module NVD
         #
         def self.from_json(json)
           {
-            data_type:   json.fetch('CVE_data_type'),
-            data_format: json.fetch('CVE_data_format'),
+            data_type:   DATA_TYPES.fetch(json.fetch('CVE_data_type')),
+            data_format: DATA_FORMATS.fetch(json.fetch('CVE_data_format')),
             **super(json),
 
             data_number_of_cves: json.fetch('CVE_data_numberOfCVEs').to_i,
