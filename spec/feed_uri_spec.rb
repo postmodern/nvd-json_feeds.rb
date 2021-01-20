@@ -21,7 +21,7 @@ describe FeedURI do
     end
   end
 
-  describe "#get", :integartion do
+  describe "#get", :integration do
     let(:contents) { Net::HTTP.get(subject.uri) }
 
     context "when not given a block" do
