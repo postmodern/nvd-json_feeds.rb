@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'feed_file_examples'
 require 'nvd/json_feeds/gz_feed_file'
 
+require 'fileutils'
 require 'shellwords'
 
 describe NVD::JSONFeeds::GzFeedFile do

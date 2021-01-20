@@ -1,6 +1,8 @@
 require 'spec_helper'
 require 'nvd/json_feeds/gz_feed_uri'
 
+require 'fileutils'
+
 describe NVD::JSONFeeds::GzFeedURI do
   let(:fixtures_dir) { File.expand_path('../fixtures',__FILE__) }
 

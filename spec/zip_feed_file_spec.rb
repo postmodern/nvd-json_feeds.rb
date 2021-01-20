@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'feed_file_examples'
 require 'nvd/json_feeds/zip_feed_file'
 
+require 'fileutils'
 require 'shellwords'
 
 describe NVD::JSONFeeds::ZipFeedFile do
