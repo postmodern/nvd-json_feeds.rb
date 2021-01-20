@@ -50,6 +50,16 @@ describe NVD::JSONFeeds::GzFeedFile do
       expect(File.file?(extracted_json_file)).to be(true)
     end
 
+    context "when gunzip fails" do
+      before do
+        allow(subject).to receive(:system).and_return(false)
+      end
+
+      it do
+        expect { subject.extract }.to raise_error(ExtractFailed)
+      end
+    end
+
     after { FileUtils.rm_f(extracted_json_file) }
   end
 end
