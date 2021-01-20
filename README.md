@@ -12,6 +12,12 @@ Provides a Ruby API to [NVD JSON Feeds].
 ## Features
 
 * Supports [NVD JSON 1.1 Schema].
+* Supports recent, modified, and Year number `.gz`/`.zip` JSON feed files.
+* Supports parsing META feed files.
+* Supports downloading `.gz`/`.zip` JSON feed files.
+* Supports reading `.gz`/`.zip` JSON feed files, without extracting them.
+* Supports extracting `.gz`/`.zip` JSON feed files.
+* Supports parsing extracted JSON feed files.
 
 ## Examples
 
