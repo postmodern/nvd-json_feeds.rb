@@ -16,6 +16,8 @@ RSpec.shared_examples ".load" do
   include_examples ".from_json"
 
   subject { described_class.load(json_node) }
+
+  it { expect(subject).to be_kind_of(described_class) }
 end
 
 RSpec.shared_examples "JSON field" do |method: , json_key: , required: false, value: nil, map: nil|

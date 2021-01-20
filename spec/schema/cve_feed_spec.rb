@@ -9,8 +9,6 @@ describe NVD::JSONFeeds::Schema::CVEFeed do
   describe ".load" do
     include_examples ".load"
 
-    it { expect(subject).to be_kind_of(described_class) }
-
     include_examples "JSON field", json_key: 'CVE_data_type',
                                    required: true,
                                    method:   :data_type,
