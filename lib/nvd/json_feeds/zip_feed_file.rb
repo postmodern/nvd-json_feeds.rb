@@ -31,7 +31,7 @@ module NVD
       #   The `unzip` command is not installed.
       #
       def read
-        `unzip -p #{Shellwords.escape(@path)} #{Shellwords.escape(json_filename)}`
+        `unzip -qq -p #{Shellwords.escape(@path)} #{Shellwords.escape(json_filename)}`
       rescue Errno::ENOENT
         raise(ReadFailed,"unzip command is not installed")
       end
@@ -47,7 +47,7 @@ module NVD
       def extract(dest_dir=nil)
         extracted_dir = dest_dir || File.dirname(@path)
 
-        unless system('unzip', '-d', extracted_dir, @path, json_filename)
+        unless system('unzip', '-qq', '-d', extracted_dir, @path, json_filename)
           raise(ExtractFailed,"unzip command failed")
         end
 

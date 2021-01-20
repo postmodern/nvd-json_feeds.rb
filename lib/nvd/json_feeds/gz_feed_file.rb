@@ -28,7 +28,7 @@ module NVD
       #   The `gunzip` command is not installed.
       #
       def read
-        `gunzip -c -k #{Shellwords.escape(@path)}`
+        `gunzip -q -c -k #{Shellwords.escape(@path)}`
       rescue Errno::ENOENT
         raise(ReadFailed,"gunzip command is not installed")
       end
@@ -42,7 +42,7 @@ module NVD
       #   The `gunzip` command failed or did the `.json` file was not extracted.
       #
       def extract
-        unless system('gunzip', '-k', @path)
+        unless system('gunzip', '-q', '-k', @path)
           raise(ExtractFailed,"gunzip command failed")
         end
 
