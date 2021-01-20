@@ -63,6 +63,36 @@ RSpec.shared_examples "JSON field" do |method: , json_key: , required: false, va
   end
 end
 
+RSpec.shared_examples "JSON Object field" do |method: , json_key: , required: false, object_class: |
+  let(:json_value) { json_node[json_key] }
+
+  if required
+    it { expect(subject.send(method)).to be_kind_of(object_class) }
+
+    context "when the \"#{json_key}\" key is missing" do
+      before { json_node.delete(json_key) }
+
+      it do
+        expect {
+          described_class.load(json_node)
+        }.to raise_error(KeyError)
+      end
+    end
+  else
+    context "when the \"#{json_key}\" key is present" do
+      it { expect(subject.send(method)).to be_kind_of(object_class) }
+    end
+
+    context "when the \"#{json_key}\" key is missing" do
+      before { json_node.delete(json_key) }
+
+      it do
+        expect(subject.send(method)).to be(nil)
+      end
+    end
+  end
+end
+
 RSpec.shared_examples "JSON Array field" do |method: , json_key: , required: false, element_class: |
   let(:json_value) { json_node[json_key] }
 
