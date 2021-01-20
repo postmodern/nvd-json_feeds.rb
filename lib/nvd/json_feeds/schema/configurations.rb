@@ -73,7 +73,7 @@ module NVD
             {
               operator: if (operator = json['operator'])
                           OPERATORS.fetch(operator,operator)
-              end,
+                        end,
               negate:   json['negate'],
 
               children:  Array(json['children']).map(&method(:load)),
