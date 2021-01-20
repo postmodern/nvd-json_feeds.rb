@@ -5,9 +5,9 @@ module NVD
   module JSONFeeds
     module Schema
       #
-      # Represents the `"configuration"` value.
+      # Represents the `"configurations"` value.
       #
-      class Configuration
+      class Configurations
         #
         # Represents a value within `"nodes"`.
         #

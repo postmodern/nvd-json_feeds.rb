@@ -1,5 +1,5 @@
 require 'nvd/json_feeds/schema/timestamp'
-require 'nvd/json_feeds/schema/configuration'
+require 'nvd/json_feeds/schema/configurations'
 require 'nvd/json_feeds/schema/impact'
 require 'cve_schema/cve'
 
@@ -16,8 +16,8 @@ module NVD
         # @return [CVESchema::CVE]
         attr_reader :cve
 
-        # @return [Configuration, nil]
-        attr_reader :configuration
+        # @return [Configurations, nil]
+        attr_reader :configurations
 
         # @return [Impact, nil]
         attr_reader :impact
@@ -34,13 +34,13 @@ module NVD
         # @param [CVESchema::CVE] cve
         #   The CVE object.
         #
-        def initialize(cve: , configuration: nil,
+        def initialize(cve: , configurations: nil,
                        impact: nil,
                        published_date: nil,
                        last_modified_date: nil)
           @cve = cve
 
-          @configuration      = configuration
+          @configurations     = configurations
           @impact             = impact
           @published_date     = published_date
           @last_modified_date = last_modified_date
@@ -58,9 +58,9 @@ module NVD
         def self.from_json(json)
           {
             cve: CVESchema::CVE.load(json.fetch('cve')),
-            configuration: if (configuration = json['configuration'])
-                             Configuration.load(configuration)
-                           end,
+            configurations: if (configurations = json['configurations'])
+                              Configurations.load(configurations)
+                            end,
             impact: if (impact = json['impact'])
                       Impact.load(impact)
                     end,
