@@ -13,11 +13,11 @@ module NVD
         include HasDataVersion
         include Enumerable
 
-        TYPES = {
+        DATA_TYPES = {
           'CVE' => :CVE
         }
 
-        FORMATS = {
+        DATA_FORMATS = {
           'MITRE' => :MITRE
         }
 
