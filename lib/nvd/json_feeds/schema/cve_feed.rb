@@ -26,20 +26,28 @@ module NVD
         # @return [:MITRE]
         attr_reader :data_format
 
+        alias format data_format
+
         # The feed type.
         #
         # @return [:CVE]
         attr_reader :data_type
+
+        alias type data_type
 
         # The number of CVEs.
         #
         # @return [Integer, nil]
         attr_reader :data_number_of_cves
 
+        alias number_of_cves data_number_of_cves
+
         # The feed timestamp.
         #
         # @return [DateTime, nil]
         attr_reader :data_timestamp
+
+        alias timestamp data_timestamp
 
         # The CVE items.
         #
