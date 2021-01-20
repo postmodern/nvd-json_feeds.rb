@@ -67,7 +67,9 @@ module NVD
 
           @data_format = data_format
           @data_type   = data_type
-          @data_timestamp = data_timestamp
+
+          @data_number_of_cves = data_number_of_cves
+          @data_timestamp      = data_timestamp
 
           @cve_items = cve_items
         end
