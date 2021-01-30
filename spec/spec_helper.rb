@@ -1,6 +1,8 @@
 require 'rspec'
-require 'nvd/json_feeds/version'
+require 'simplecov'
+SimpleCov.start
 
+require 'nvd/json_feeds/version'
 include NVD::JSONFeeds
 
 RSpec.configure do |specs|
