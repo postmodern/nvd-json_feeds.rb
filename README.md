@@ -3,7 +3,6 @@
 * [Homepage](https://github.com/postmodern/nvd-json_feeds.rb#readme)
 * [Issues](https://github.com/postmodern/nvd-json_feeds.rb/issues)
 * [Documentation](http://rubydoc.info/gems/nvd-json_feeds/frames)
-* [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
