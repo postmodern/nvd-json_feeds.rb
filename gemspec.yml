@@ -4,7 +4,7 @@ description: Provides a Ruby API to NVD JSON Feeds.
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
-homepage: https://github.com/postmodern/nvd-json_feeds#readme
+homepage: https://github.com/postmodern/nvd-json_feeds.rb#readme
 
 metadata:
   documentation_uri: https://rubydoc.info/gems/nvd-json_feeds
