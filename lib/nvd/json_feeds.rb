@@ -5,6 +5,7 @@ require 'date'
 
 module NVD
   module JSONFeeds
+    # All available feeds.
     FEEDS =  Hash[[:modified, :recent, *(2002 .. Date.today.year)].map { |name|
       [name, Feed.new(name)]
     }]
