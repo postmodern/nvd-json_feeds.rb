@@ -130,7 +130,7 @@ cve_feed = json_feed.parse
 
 ## Requirements
 
-* [ruby] >= 2.7.0
+* [Ruby] >= 2.7.0
 * [multi_json] ~> 1.0
 * [cve_schema] ~> 0.1
 
@@ -155,5 +155,6 @@ See {file:LICENSE.txt} for details.
 [NVD JSON Feeds]: https://nvd.nist.gov/vuln/data-feeds#JSON_FEEDS
 [NVD JSON 1.1 Schema]: https://csrc.nist.gov/schema/nvd/feed/1.1/nvd_cve_feed_json_1.1.schema
 
+[Ruby]: https://www.ruby-lang.org/
 [multi_json]: https://github.com/intridea/multi_json#readme
 [cve_schema]: https://github.com/postmodern/cve_schema.rb#readme
