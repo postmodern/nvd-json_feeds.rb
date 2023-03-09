@@ -11,6 +11,7 @@ metadata:
   source_code_uri:   https://github.com/postmodern/nvd-json_feeds.rb
   bug_tracker_uri:   https://github.com/postmodern/nvd-json_feeds.rb/issues
   changelog_uri:     https://github.com/postmodern/nvd-json_feeds.rb/blob/main/ChangeLog.md
+  rubygems_mfa_required: 'true'
 
 required_ruby_version: ">= 2.7.0"
 
